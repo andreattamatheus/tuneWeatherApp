@@ -18,7 +18,7 @@ class CountryApiService
 
     public function __construct()
     {
-        $this->baseUri = "https://restcountries.com/v3.1/all";
+        $this->baseUri = 'https://restcountries.com/v3.1/all';
     }
 
     public function sendRequest(): array
@@ -28,8 +28,8 @@ class CountryApiService
                 ->get($this->baseUri);
 
             return $this->decodeResponse($response, $this->baseUri);
-        } catch (RequestException | \JsonException $e) {
-            logger()->channel('weather-api')->error('[Open Weather API - Request] - ' . $this->baseUri, [
+        } catch (RequestException|\JsonException $e) {
+            logger()->channel('weather-api')->error('[Open Weather API - Request] - '.$this->baseUri, [
                 'PID' => getmypid(),
                 'message' => $e->getMessage(),
             ]);
@@ -49,7 +49,7 @@ class CountryApiService
 
             return ['success' => false, 'message' => 'An error countries'];
         }
-        logger()->channel()->info('[Countries API - Response] - ' . $endpoint, [
+        logger()->channel()->info('[Countries API - Response] - '.$endpoint, [
             'PID' => getmypid(),
             'response' => $decodedResponse,
         ]);

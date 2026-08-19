@@ -5,7 +5,6 @@ namespace App\Services;
 use App\Exceptions\LocationForecastException;
 use App\Http\Resources\ForecastResource;
 use App\Models\User;
-use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -23,7 +22,7 @@ class UserService
                 $query->select('id', 'location_id', 'date', 'min_temperature', 'max_temperature', 'condition', 'icon');
             }])->paginate($request->get('per_page', 10));
         } catch (\Throwable $th) {
-            logger()->channel('daily')->error('Error getUserLocations locations: ' . $th->getMessage());
+            logger()->channel('daily')->error('Error getUserLocations locations: '.$th->getMessage());
 
             throw new Exception('An error occurred while getting user locations.');
         }
@@ -56,7 +55,7 @@ class UserService
                 $forecast->delete();
             });
         } catch (\Throwable $th) {
-            logger()->channel('daily')->error('Error destroy user locations: ' . $th->getMessage());
+            logger()->channel('daily')->error('Error destroy user locations: '.$th->getMessage());
 
             throw new LocationForecastException('Error deleting location forecast data.');
         }

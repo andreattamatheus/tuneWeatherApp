@@ -26,7 +26,7 @@ class UserController extends Controller
 
             return LocationResource::collection($userLocations);
         } catch (\Exception $e) {
-            logger()->channel('daily')->error('Error UserController getUserLocations: ' . $e->getMessage());
+            logger()->channel('daily')->error('Error UserController getUserLocations: '.$e->getMessage());
 
             return response()->json([
                 'message' => 'Error fetching user locations',
@@ -44,7 +44,7 @@ class UserController extends Controller
                 'message' => 'Location register successfully!',
             ], Response::HTTP_OK);
         } catch (\Exception $e) {
-            logger()->channel('daily')->error('Error saving user locations: ' . $e->getMessage());
+            logger()->channel('daily')->error('Error saving user locations: '.$e->getMessage());
 
             return response()->json([
                 'message' => 'Error saving user location',

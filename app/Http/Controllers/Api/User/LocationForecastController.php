@@ -23,7 +23,7 @@ class LocationForecastController extends Controller
 
             return MostRecentForecastResource::make($data);
         } catch (\Exception $e) {
-            logger()->channel('daily')->error('Error get locations: ' . $e->getMessage());
+            logger()->channel('daily')->error('Error get locations: '.$e->getMessage());
 
             return response()->json([
                 'message' => 'Error fetching most recent forecast',
@@ -38,7 +38,7 @@ class LocationForecastController extends Controller
 
             return CountryResource::make($countries);
         } catch (\Exception $e) {
-            logger()->channel('daily')->error('Error get countries: ' . $e->getMessage());
+            logger()->channel('daily')->error('Error get countries: '.$e->getMessage());
 
             return response()->json([
                 'message' => 'Error fetching countries',

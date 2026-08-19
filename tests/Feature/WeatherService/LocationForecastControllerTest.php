@@ -13,7 +13,7 @@ beforeEach(function () {
 test(/**
  * @throws JsonException
  */ 'fetch weather forecast successfully', function () {
-    $responseFromApiSample = json_decode(file_get_contents(__DIR__ . '/../../Stubs/WeatherApiResponse.json'), true, 512, JSON_THROW_ON_ERROR);
+    $responseFromApiSample = json_decode(file_get_contents(__DIR__.'/../../Stubs/WeatherApiResponse.json'), true, 512, JSON_THROW_ON_ERROR);
 
     $dataForDTO = [
         'list' => $responseFromApiSample['response']['list'],
